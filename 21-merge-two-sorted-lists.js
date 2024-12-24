@@ -1,27 +1,27 @@
 function ListNode(val, next) {
-    this.val = (val===undefined ? 0 : val)
-    this.next = (next===undefined ? null : next)
+  this.val = (val === undefined ? 0 : val)
+  this.next = (next === undefined ? null : next)
 }
 
 var mergeTwoLists = function (list1, list2) {
   const newHead = new ListNode();
-  let prev = newHead;
+  let tail = newHead;
   while (list1 && list2) {
     if (list1.val <= list2.val) {
-      prev.next = list1;
+      tail.next = list1;
       list1 = list1.next;
     } else {
-      prev.next = list2;
+      tail.next = list2;
       list2 = list2.next;
     }
 
-    prev = prev.next;
+    tail = tail.next;
   }
 
   if(list1) {
-    prev.next = list1;
+    tail.next = list1;
   } else if (list2) {
-    prev.next = list2;
+    tail.next = list2;
   }
 
   return newHead.next;
